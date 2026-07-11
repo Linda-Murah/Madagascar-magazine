@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Madagascar Magazine — Depuis 1995</title>
+<meta name="description" content="Madagascar Magazine, revue économique et culturelle diffusée à 30 000 exemplaires depuis 1995. Espace publicitaire et partenariats éditoriaux.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F7F4EE;
+    --ink:#1B2740;
+    --ink-soft:#4A5468;
+    --orange:#E85C1E;
+    --orange-deep:#B8430E;
+    --line:#D8D2C4;
+    --white:#FFFFFF;
+    --max:1180px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 32px;}
+  h1,h2,h3{font-family:'Fraunces', serif;font-weight:600;letter-spacing:-0.01em;}
+  .eyebrow{
+    font-family:'Space Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--orange-deep);
+  }
+  .rule{border:none;border-top:1px solid var(--line);}
+
+  /* Header */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(247,244,238,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 32px;max-width:var(--max);margin:0 auto;
+  }
+  .logo{
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:19px;
+    letter-spacing:-0.01em;
+  }
+  .logo span{color:var(--orange);}
+  nav ul{list-style:none;display:flex;gap:36px;}
+  nav a{
+    font-size:13px;letter-spacing:0.04em;text-transform:uppercase;
+    font-weight:500;color:var(--ink-soft);
+    transition:color .2s;
+  }
+  nav a:hover{color:var(--orange-deep);}
+  .nav-toggle{display:none;background:none;border:none;font-size:22px;cursor:pointer;color:var(--ink);}
+
+  /* Hero */
+  .hero{padding:96px 0 72px;position:relative;overflow:hidden;}
+  .hero .wrap{position:relative;}
+  .masthead-num{
+    display:flex;justify-content:space-between;align-items:baseline;
+    font-family:'Space Mono',monospace;font-size:12px;color:var(--ink-soft);
+    letter-spacing:0.08em;text-transform:uppercase;
+    border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);
+    padding:10px 0;margin-bottom:48px;
+  }
+  .hero h1{
+    font-size:clamp(44px,7vw,88px);
+    line-height:0.98;
+    max-width:11ch;
+  }
+  .hero-sub{
+    display:grid;grid-template-columns:1.1fr 0.9fr;gap:64px;
+    margin-top:40px;align-items:end;
+  }
+  .hero-sub p{max-width:46ch;color:var(--ink-soft);font-size:17px;}
+  .stat-row{display:flex;gap:40px;flex-wrap:wrap;}
+  .stat{border-left:2px solid var(--orange);padding-left:14px;}
+  .stat .num{font-family:'Fraunces',serif;font-size:30px;font-weight:600;line-height:1;}
+  .stat .label{font-size:12px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:0.06em;margin-top:4px;}
+
+  /* Section generic */
+  section{padding:80px 0;}
+  .section-head{
+    display:grid;grid-template-columns:220px 1fr;gap:48px;
+    border-top:1px solid var(--ink);padding-top:20px;margin-bottom:48px;
+  }
+  .section-head h2{font-size:clamp(30px,4vw,44px);}
+
+  /* Le Magazine */
+  #magazine{background:var(--ink);color:var(--paper);}
+  #magazine .section-head{border-top-color:rgba(247,244,238,0.35);}
+  #magazine .eyebrow{color:var(--orange);}
+  .mag-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;}
+  .mag-grid p{color:rgba(247,244,238,0.75);margin-bottom:16px;max-width:52ch;}
+  .specs{list-style:none;margin-top:24px;}
+  .specs li{
+    display:flex;justify-content:space-between;
+    padding:12px 0;border-top:1px solid rgba(247,244,238,0.18);
+    font-size:14px;
+  }
+  .specs li:last-child{border-bottom:1px solid rgba(247,244,238,0.18);}
+  .specs .k{color:rgba(247,244,238,0.55);text-transform:uppercase;letter-spacing:0.05em;font-size:12px;}
+  .specs .v{font-family:'Space Mono',monospace;}
+
+  /* Tarifs */
+  .tarif-block{margin-bottom:56px;}
+  .tarif-block h3{font-size:20px;margin-bottom:4px;}
+  .tarif-note{color:var(--ink-soft);font-size:14px;margin-bottom:24px;}
+  table{width:100%;border-collapse:collapse;font-size:15px;}
+  th{
+    text-align:left;font-family:'Space Mono',monospace;font-size:11px;
+    text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-soft);
+    padding:10px 0;border-bottom:1px solid var(--ink);
+  }
+  td{padding:14px 0;border-bottom:1px solid var(--line);}
+  td.price{
+    font-family:'Fraunces',serif;font-weight:600;text-align:right;
+    color:var(--orange-deep);white-space:nowrap;
+  }
+  .degressif{
+    margin-top:32px;padding:24px 28px;background:var(--white);
+    border-left:3px solid var(--orange);
+  }
+  .degressif .eyebrow{margin-bottom:8px;display:block;}
+  .degressif ul{list-style:none;display:flex;gap:32px;margin-top:10px;flex-wrap:wrap;}
+  .degressif li{font-family:'Space Mono',monospace;font-size:14px;}
+  .degressif strong{color:var(--orange-deep);}
+
+  /* Contact */
+  #contact{background:var(--ink-soft);}
+  #contact{background:var(--ink);color:var(--paper);}
+  .contact-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:56px;align-items:start;}
+  .contact-grid h2{font-size:clamp(28px,4vw,40px);max-width:14ch;margin-bottom:20px;}
+  .contact-grid p{color:rgba(247,244,238,0.75);max-width:44ch;margin-bottom:28px;}
+  .cta{
+    display:inline-block;background:var(--orange);color:var(--white);
+    padding:14px 28px;font-size:13px;letter-spacing:0.06em;text-transform:uppercase;
+    font-weight:600;transition:background .2s;
+  }
+  .cta:hover{background:var(--orange-deep);}
+  .contact-card{border:1px solid rgba(247,244,238,0.25);padding:28px;}
+  .contact-card .eyebrow{color:var(--orange);margin-bottom:16px;display:block;}
+  .contact-line{margin-bottom:14px;font-size:15px;}
+  .contact-line .k{display:block;font-size:11px;color:rgba(247,244,238,0.5);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:2px;}
+
+  footer{
+    background:var(--ink);color:rgba(247,244,238,0.55);
+    padding:24px 0;border-top:1px solid rgba(247,244,238,0.18);
+    font-size:12px;
+  }
+  .footer-inner{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;max-width:var(--max);margin:0 auto;padding:0 32px;}
+
+  @media (max-width:860px){
+    nav{display:none;}
+    .nav-toggle{display:block;}
+    .hero-sub, .mag-grid, .section-head, .contact-grid{grid-template-columns:1fr;gap:28px;}
+    .stat-row{gap:28px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <div class="logo">MADAGASCAR<span>.</span>MAGAZINE</div>
+    <nav><ul>
+      <li><a href="#magazine">Le Magazine</a></li>
+      <li><a href="#pub">Espace Publicitaire</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul></nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="masthead-num">
+      <span>Depuis 1995</span>
+      <span>Madagascar &amp; Océan Indien</span>
+      <span>Éditions Mada</span>
+    </div>
+    <h1>La revue économique et culturelle de Madagascar.</h1>
+    <div class="hero-sub">
+      <p>Madagascar Magazine couvre l'actualité, le tourisme, l'économie et la culture de la Grande Île depuis près de trente ans. Une diffusion établie, un lectorat fidèle.</p>
+      <div class="stat-row">
+        <div class="stat"><div class="num">30 000</div><div class="label">Exemplaires</div></div>
+        <div class="stat"><div class="num">1995</div><div class="label">Première parution</div></div>
+        <div class="stat"><div class="num">21×29,7</div><div class="label">Format (cm)</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="magazine">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">01 — Le Magazine</span>
+      <h2>Une diffusion établie, un support imprimé de référence.</h2>
+    </div>
+    <div class="mag-grid">
+      <div>
+        <p>Madagascar Magazine s'adresse à un lectorat engagé dans la vie économique, touristique et culturelle de Madagascar. Chaque numéro est distribué à 30 000 exemplaires, sur un format standard de revue, avec une qualité d'impression offset.</p>
+        <p>La revue accueille des espaces publicitaires classiques ainsi que des formats de publi-rédactionnel, pour les partenaires souhaitant une présence éditoriale approfondie.</p>
+      </div>
+      <ul class="specs">
+        <li><span class="k">Format</span><span class="v">21 cm × 29,7 cm</span></li>
+        <li><span class="k">Impression</span><span class="v">Offset — Quadri + Noir &amp; Blanc</span></li>
+        <li><span class="k">Trame</span><span class="v">Quadri 150</span></li>
+        <li><span class="k">Tirage</span><span class="v">30 000 exemplaires</span></li>
+        <li><span class="k">Zone de diffusion</span><span class="v">Madagascar</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="pub">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">02 — Espace Publicitaire</span>
+      <h2>Tarifs des annonces et du publi-rédactionnel.</h2>
+    </div>
+
+    <div class="tarif-block">
+      <h3>Tarif des annonces</h3>
+      <p class="tarif-note">Emplacements de couverture et pages intérieures.</p>
+      <table>
+        <thead><tr><th>Emplacement</th><th></th></tr></thead>
+        <tbody>
+          <tr><td>4ᵉ de couverture</td><td class="price">2 450 €</td></tr>
+          <tr><td>2ᵉ de couverture</td><td class="price">2 300 €</td></tr>
+          <tr><td>3ᵉ de couverture</td><td class="price">2 150 €</td></tr>
+          <tr><td>Double page centrale</td><td class="price">1 800 €</td></tr>
+          <tr><td>Double page interne</td><td class="price">1 600 €</td></tr>
+          <tr><td>1 page centrale</td><td class="price">1 300 €</td></tr>
+          <tr><td>1 page interne</td><td class="price">1 000 €</td></tr>
+          <tr><td>1/2 page</td><td class="price">600 €</td></tr>
+          <tr><td>1/3 page</td><td class="price">450 €</td></tr>
+          <tr><td>1/4 page</td><td class="price">380 €</td></tr>
+          <tr><td>1/8 page</td><td class="price">250 €</td></tr>
+          <tr><td>1/16 page</td><td class="price">150 €</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tarif-block">
+      <h3>Tarif du publi-rédactionnel</h3>
+      <p class="tarif-note">Rédaction et photos incluses.</p>
+      <table>
+        <thead><tr><th>Format</th><th></th></tr></thead>
+        <tbody>
+          <tr><td>1 page</td><td class="price">600 €</td></tr>
+          <tr><td>2 pages</td><td class="price">800 €</td></tr>
+          <tr><td>3 pages</td><td class="price">1 000 €</td></tr>
+          <tr><td>4 pages</td><td class="price">1 200 €</td></tr>
+          <tr><td>5 pages</td><td class="price">1 400 €</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="degressif">
+      <span class="eyebrow">Dégressif grandes surfaces</span>
+      <span style="font-size:14px;color:var(--ink-soft);">À partir d'1/2 page minimum, pour toute réservation sur une période d'un an maximum.</span>
+      <ul>
+        <li>2 numéros — <strong>5%</strong></li>
+        <li>3 numéros — <strong>8%</strong></li>
+        <li>4 numéros — <strong>10%</strong></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="section-head" style="border-top-color:rgba(247,244,238,0.35);">
+      <span class="eyebrow" style="color:var(--orange);">03 — Contact</span>
+      <h2 style="color:var(--paper);">Demander le dossier de partenariat.</h2>
+    </div>
+    <div class="contact-grid">
+      <div>
+        <p>Pour toute réservation d'espace publicitaire ou de publi-rédactionnel, contactez l'équipe Madagascar Magazine.</p>
+        <a class="cta" href="mailto:communication.mercatis@gmail.com">Écrire par e-mail</a>
+      </div>
+      <div class="contact-card">
+        <span class="eyebrow">Éditions Mada</span>
+        <div class="contact-line"><span class="k">Adresse</span>5, Allée de la Moulinière — 95800 Cergy St-Christophe</div>
+        <div class="contact-line"><span class="k">Téléphone</span>034 95 111 89</div>
+        <div class="contact-line"><span class="k">E-mail</span>communication.mercatis@gmail.com</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <span>Madagascar Magazine — Éditions Mada</span>
+    <span>Réalisation Mercatis Communication</span>
+  </div>
+</footer>
+
+</body>
+</html>
