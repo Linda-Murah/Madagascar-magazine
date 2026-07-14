@@ -316,7 +316,6 @@
       <div class="cover-item"><img src="numero-119.jpg" alt="Couverture n°119"><div class="cap">N°119</div></div>
       <div class="cover-item"><img src="numero-118.jpg" alt="Couverture n°118"><div class="cap">N°118</div></div>
       <div class="cover-item"><img src="numero-117.jpg" alt="Couverture n°117"><div class="cap">N°117</div></div>
-      <div class="cover-item"><img src="numero-116.jpg" alt="Couverture n°116"><div class="cap">N°116</div></div>
       <div class="cover-item"><img src="numero-115.jpg" alt="Couverture n°115"><div class="cap">N°115</div></div>
       <div class="cover-item"><img src="numero-114.jpg" alt="Couverture n°114"><div class="cap">N°114</div></div>
       <div class="cover-item"><img src="numero-113.jpg" alt="Couverture n°113"><div class="cap">N°113</div></div>
@@ -465,23 +464,7 @@
       <h2>Ils nous ont fait confiance.</h2>
     </div>
     <div class="logos-strip">
-      <div class="logos-track">
-        <!-- Remplace les fichiers ci-dessous par tes vrais logos (fond transparent de préférence).
-             La liste est dupliquée une fois pour que le défilement soit continu : garde les deux moitiés identiques. -->
-        <img src="logos/logo-1.png" alt="Annonceur">
-        <img src="logos/logo-2.png" alt="Annonceur">
-        <img src="logos/logo-3.png" alt="Annonceur">
-        <img src="logos/logo-4.png" alt="Annonceur">
-        <img src="logos/logo-5.png" alt="Annonceur">
-        <img src="logos/logo-6.png" alt="Annonceur">
-        <!-- copie identique pour la boucle -->
-        <img src="logos/logo-1.png" alt="Annonceur">
-        <img src="logos/logo-2.png" alt="Annonceur">
-        <img src="logos/logo-3.png" alt="Annonceur">
-        <img src="logos/logo-4.png" alt="Annonceur">
-        <img src="logos/logo-5.png" alt="Annonceur">
-        <img src="logos/logo-6.png" alt="Annonceur">
-      </div>
+      <div class="logos-track" id="logosTrack"><!-- généré automatiquement --></div>
     </div>
     <p class="logos-note">Marques ayant figuré dans les pages du magazine. Retrait sur simple demande.</p>
   </div>
@@ -524,8 +507,42 @@
       btn.setAttribute('aria-expanded', String(!isOpen));
     });
   });
+
+  // Logos : cherche logo-1 à logo-12, essaie .png puis .jpg puis .jpeg,
+  // ignore ceux qui n'existent pas. Duplique la série trouvée pour un défilement continu.
+  (function(){
+    var track = document.getElementById('logosTrack');
+    if(!track) return;
+    var MAX = 12;
+    var exts = ['png','jpg','jpeg'];
+    var found = [];
+
+    function tryLoad(n, extIndex){
+      if(extIndex >= exts.length) return; // aucune extension trouvée pour ce numéro
+      var url = 'logos/logo-' + n + '.' + exts[extIndex];
+      var test = new Image();
+      test.onload = function(){ found.push(url); render(); };
+      test.onerror = function(){ tryLoad(n, extIndex + 1); };
+      test.src = url;
+    }
+
+    var renderScheduled;
+    function render(){
+      clearTimeout(renderScheduled);
+      renderScheduled = setTimeout(function(){
+        found.sort(function(a,b){
+          var na = parseInt(a.match(/logo-(\d+)/)[1],10);
+          var nb = parseInt(b.match(/logo-(\d+)/)[1],10);
+          return na - nb;
+        });
+        var html = found.map(function(u){ return '<img src="'+u+'" alt="Annonceur">'; }).join('');
+        track.innerHTML = html + html; // duplication pour la boucle
+      }, 150);
+    }
+
+    for(var i=1;i<=MAX;i++){ tryLoad(i,0); }
+  })();
 </script>
 
 </body>
 </html>
-
